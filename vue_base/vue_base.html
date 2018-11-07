@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue核心：选项参数+指令+钩子函数(生命周期)</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <!--选项参数-->
+        <p>使用计算属性{{style}}</p>
+        <p>使用属性检测,{{num}},{{arr[0]}}</p>
+        <p>使用过滤器{{num|ff}}</p>
+    </div>
+    <script>
+        //全局指令
+        Vue.directive('自定义指令名称',{
+            //指令的钩子函数 5个
+            bind:function(el,obj){
+
+            },
+            updated:function(el,obj){
+
+            }
+        });
+
+        //全局过滤器
+        Vue.filter('过滤器的名称',function(value){
+            return 0;
+        });
+
+        //全局组件
+        Vue.component('组件名字',{
+            template:'<div>我是全局组件的模板</div>',
+            data(){
+                return{
+
+                }
+            },
+            computed:{
+
+            },
+            watch:{
+
+            },
+            methods:{
+
+            },
+            directives:{
+
+            },
+            filters:{
+
+            }
+        });
+
+        var vm1 = new Vue({
+            
+            el:'#app1',   //选项参数： 挂载点
+            /*
+            
+            */ 
+            
+            data:{          //选项参数： 数据代理 作用:
+                msg:'好好学习',
+                arr:[10],
+                obj:{},
+                num:0
+            },
+
+            methods:{     //选项参数：  存放函数   作用：
+
+            },
+
+            computed:{      //选项参数： 计算属性  作用：
+                '计算属性函数名':function(){
+                    return this.msg+',天天向上';
+                },
+                'style':function(){
+                    return this.msg+',天天向上';
+                }
+            },
+
+            watch:{       //选项参数：  数据代理检测   作用：
+                num:{
+                    handler:function(newValue,oldValue){
+                        this.arr[0]++;
+                    }
+                },
+                arr:{
+                    handler:function(newValue,oldValue){
+
+                    },
+                    deep:true   //深度检测
+                }
+            },
+
+            filters:{     //选项参数：  过滤器  作用：
+                '过滤器的名称':function(value1,value2){   //{{data|过滤器的名称}}
+                    return 0;
+                },
+                'ff':function(){
+                    return '我要好好学习';
+                }
+            },
+
+            directives:{    //选项参数:  自定义局部指令 作用：
+                '自定义指令名':{
+                    //自定义指令的构造函数 5个
+                    bind:function(el,obj){
+
+                    },
+                    updated:function(el,obj){
+                        
+                    },
+                }
+            },
+
+            components:{   //选项参数: 局部组件  作用;
+                /*组件名的命名规则*/
+                '组件名':{
+                    template:'<div>我是局部组件的模板</div>',
+                    data(){
+                        return{
+                            msg:'',
+                        }
+                    },
+                    methods:{
+
+                    },
+                    watch:{
+
+                    },
+                    filters:{
+
+                    },
+                    computed:{
+
+                    },
+                    delimiters:{
+
+                    }
+                }
+            }
+        });
+    </script>
+
+    <hr/>
+
+    <div id="app2">
+        <!--指令-->
+        <div>
+            <p>v-model</p>
+        </div>
+
+        <div>
+            <p>v-on @</p>
+        </div>
+
+        <div>
+            <p>事件修饰符</p>
+        </div>
+
+        <div>
+            <p>v-if  和 v-else</p>
+            <p>v-show</p>
+        </div>
+
+        <div>
+            <p>v-for</p>
+        </div>
+
+        <div>
+            <p>v-bind  :</p>
+
+            <p>两个特殊的标签属性  class 和 style</p>
+        </div>
+
+
+        <div>
+            <p>Vue的动画</p>
+        </div>
+    </div>
+    <script>
+        
+        var vm2 = new Vue({
+            el:'#app2',
+            data:{
+
+            }
+        });
+    </script>
+
+    <hr>
+
+    <div id="app3">
+            <!--钩子函数（生命周期）-->
+    </div>
+    <script>
+        var vm3 = new Vue({
+            el:'#app3',
+            //钩子函数（生命周期）
+            beforeCreate:function() {
+                
+            },
+        });
+    </script>
+    </body>
+</html>
