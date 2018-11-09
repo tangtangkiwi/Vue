@@ -21,13 +21,16 @@ function isDef (v) {
   return v !== undefined && v !== null
 }
 
+
 function isTrue (v) {
   return v === true
 }
 
+
 function isFalse (v) {
   return v === false
 }
+
 
 /**
  * Check if value is primitive
