@@ -17,11 +17,12 @@ function isUndef (v) {
   return v === undefined || v === null
 }
 
+
 function isDef (v) {
   return v !== undefined && v !== null
 }
-
-
+ 
+ 
 function isTrue (v) {
   return v === true
 }
@@ -52,6 +53,7 @@ function isObject (obj) {
   return obj !== null && typeof obj === 'object'
 }
 
+
 var _toString = Object.prototype.toString;
 
 /**
@@ -61,6 +63,8 @@ var _toString = Object.prototype.toString;
 function isPlainObject (obj) {
   return _toString.call(obj) === '[object Object]'
 }
+
+
 
 function isRegExp (v) {
   return _toString.call(v) === '[object RegExp]'
@@ -74,6 +78,8 @@ function isValidArrayIndex (val) {
   return n >= 0 && Math.floor(n) === n && isFinite(val)
 }
 
+
+
 /**
  * Convert a value to a string that is actually rendered.
  */
@@ -84,6 +90,8 @@ function toString (val) {
       ? JSON.stringify(val, null, 2)
       : String(val)
 }
+
+
 
 /**
  * Convert a input value to a number for persistence.
